@@ -3,7 +3,7 @@ var app = express();
 
 console.log(__dirname)
 app.get('/', function(req, res){
-    res.sendFile(__dirname+ '/google.html');
+    res.sendFile(__dirname+ '/apple.html');
     
 })
 
