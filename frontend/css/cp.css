@@ -1,5 +1,5 @@
 #name{
-    padding : 5.2em 1em;
+    padding : 7em 1em;
     background-color: rgb(199, 236, 236);
     text-align: center;
 }
@@ -9,7 +9,7 @@
     background-color: rgb(244, 248, 248);
 }
 
-h1{ font-size:600%;
+h1{ font-size:8.8vw !important;
     color:white;}
 
 .slidecontainer {
