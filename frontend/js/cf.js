@@ -68,9 +68,12 @@ function show() {
                    var language = sub[i].programmingLanguage;
                    var submissionId = sub[i].id;
                    var solvedStatus = sub[i].verdict;
-                   if(solvedStatus=="OK") solved.add(name);
-                   else if(solvedStatus=="PARTIAL") psolved.add(name);
-                   rem.add(name);
+                   var tags = sub[i].problem.tags
+                   //console.log(tags);
+                   var details=name+"#"+tags;
+                   if(solvedStatus=="OK") solved.add(details);
+                   else if(solvedStatus=="PARTIAL") psolved.add(details);
+                   rem.add(details);
                    var timeTaken = sub[i].timeConsumedMillis;
                    var memoryUsed = sub[i].memoryConsumedBytes;
                    var contestId = sub[i].contestId;
@@ -78,7 +81,6 @@ function show() {
                    else var score = 0;
                    var t = new Date(1970,0,1,11); // Epoch
                    t.setSeconds(sub[i].creationTimeSeconds);
-      //console.log(t);
   
                   submissionsArray.push({
                       site_name: "CODEFORCES",
@@ -90,7 +92,8 @@ function show() {
                       site_submission_score : score,
                       site_submission_language: language,
                       site_submission_time_taken : timeTaken,
-                      site_submission_memory_consumed : memoryUsed
+                      site_submission_memory_consumed : memoryUsed,
+                      site_submission_tags : tags
                     })
                 //console.log(submissionsArray[i]);
             }
@@ -149,19 +152,19 @@ function drawChart(submissions,handle) {
 
 function solve(subs)
 {   var h="";
-    for(var x of subs) {h+=`<div class="badge badge-secondary">${x}</div>`;}
+    for(var x of subs) {h+=`<div class="badge badge-secondary" title=${x.split("#")[1]}>${x.split("#")[0]}</div>`;}
     document.getElementsByClassName("row-1")[0].innerHTML=h;
 }
 
 function psolve(subs)
 {   var h="";
-    for(var x of subs) {h+=`<div class="badge badge-secondary">${x}</div>`;}
+    for(var x of subs) {h+=`<div class="badge badge-secondary" title=${x.split("#")[1]}>${x.split("#")[0]}</div>`;}
     document.getElementsByClassName("row-1")[1].innerHTML=h;
     
 }
 
 function submit(subs)
 {  var h="";
-    for(var x of subs) {h+=`<div class="badge badge-secondary">${x}</div>`;}
+    for(var x of subs) {h+=`<div class="badge badge-secondary" title=${x.split("#")[1]}>${x.split("#")[0]}</div>`;}
     document.getElementsByClassName("row-1")[2].innerHTML=h;
 }
