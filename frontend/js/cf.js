@@ -38,7 +38,7 @@ function drawpie( submissions, handle) {
       title: handle+ ' Submission Verdicts',
       pieHole: 0.4,
       colors:['green','lightgreen','red','orange','purple','yellow','lightblue'],
-      is3D: true,
+      is3D: true, 
     };
 
     var chart = new google.visualization.PieChart(document.getElementById('piechart'));
