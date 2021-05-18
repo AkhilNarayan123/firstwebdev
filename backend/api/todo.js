@@ -2,26 +2,26 @@ var express = require('express');
 const router = express.Router();
 
 var a=[]
-router.get('/todos', function(req,res){
+router.get('/', function(req,res){
      //console.log(a);
     res.json(a);
 
 })
-router.post('/todo', function(req,res){
+router.post('/todos', function(req,res){
     a.push(req.body);
     //console.log(a);
     res.json(a);
 
 })
 
-router.patch('/todo/mark', function(req,res){
+router.patch('/mark', function(req,res){
     console.log(req.body)
     a[req.body.index].isactive=false;
     //console.log(a);
     res.json(a);
 })
 
-router.patch('/todo/remove', function(req,res){
+router.patch('/remove', function(req,res){
     console.log(req.body.index)
     a[req.body.index].isdeleted=true;
     //console.log(a);
