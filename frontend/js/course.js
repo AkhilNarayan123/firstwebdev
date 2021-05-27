@@ -79,7 +79,7 @@ function remove(index,id)
         },
         success: function(response) {
             //response=JSON.parse(JSON.stringify(response));
-            //console.log(response);
+            console.log(response);
             draw();
         }, //sucess
         error: function(error) { } //error

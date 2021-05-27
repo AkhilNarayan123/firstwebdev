@@ -2,6 +2,7 @@ var express = require('express');
 const router = express.Router();
 
 var a=[]
+
 router.get('/', function(req,res){
      //console.log(a);
     res.json(a);

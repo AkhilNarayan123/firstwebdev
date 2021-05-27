@@ -29,25 +29,47 @@ router.post('/add', function(req,res){
 })
 
 router.patch('/mark', function(req,res){
-   console.log(req.body._id);
-   course.replaceOne({ _id:req.body._id }, { isactive: false },(err,data)=>{
-    if(err){ res.status(400).json({msg:"Failed to Update"}); }
-    else { 
-        //console.log(data);
-        res.status(200).json({msg:"Updated"});}
-  });
-   
+  console.log(req.body._id)
+  course.find({_id:req.body._id}, function (err, data) {
+   if(err){ res.status(400).json({msg:"Failed"}); }
+   else { console.log(data);
+          course.updateOne({ _id:req.body._id }, {isactive: false}, (err,data)=>
+          {
+           if(err){ res.status(400).json({msg:"Failed to Update"}); }
+               else { 
+                   //console.log(data);
+                   res.status(200).json({msg:"Updated"});}
+          }
+          );
+         }
+});
 })
 
 router.patch('/remove', function(req,res){
    console.log(req.body._id)
-    course.replaceOne({ _id:req.body._id }, { isdeleted: true },(err,data)=>{
-     if(err){ res.status(400).json({msg:"Failed to Update"}); }
-     else { 
-         //console.log(data);
-         res.status(200).json({msg:"Updated"});}
-   });
-   
+   course.find({_id:req.body._id}, function (err, data) {
+    if(err){ res.status(400).json({msg:"Failed"}); }
+    else { console.log(data);
+           course.updateOne({ _id:req.body._id }, {isdeleted: true}, (err,data)=>
+           {
+            if(err){ res.status(400).json({msg:"Failed to Update"}); }
+                else { 
+                    //console.log(data);
+                    res.status(200).json({msg:"Updated"});}
+           }
+           );
+          }
+});
 })
+
+// router.patch('/remove', function(req,res){
+//   console.log(req.body._id)
+//    course.replaceOne({ _id:req.body._id }, { isdeleted: true },(err,data)=>{
+//     if(err){ res.status(400).json({msg:"Failed to Update"}); }
+//     else { 
+//         //console.log(data);
+//         res.status(200).json({msg:"Updated"});}
+//   });
+// })
 
 module.exports=router;

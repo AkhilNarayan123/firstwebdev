@@ -21,7 +21,9 @@ mongoose.connect(Connection_String,options,function cb(){
 mongoose.connection.on('connected', function()
 {console.log("Database Connected");})
 
-
+app.get('/su/:id', function(req, res){
+    res.sendFile(__dirname+ '/frontend/html/su.html'); 
+ })
 app.get('/', function(req, res){
    res.sendFile(__dirname+ '/frontend/html/resume.html'); 
 })
@@ -36,9 +38,6 @@ app.get('/:page', function(req, res){
     res.sendFile(__dirname+ '/frontend/html/'+ req.params.page+".html");
     //else  res.sendFile(__dirname+ '/frontend/'+ req.params.page);
 })
-
-
-
 
 var port= process.env.PORT  || 3000;
 app.listen(port,function cb()
